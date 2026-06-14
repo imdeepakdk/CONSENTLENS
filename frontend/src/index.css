@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: #0b1020;
+  color: #f8fafc;
+  font-family: Inter, sans-serif;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.gradient-text {
+  background: linear-gradient(
+    to right,
+    #06b6d4,
+    #4f46e5,
+    #7c3aed
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+}
