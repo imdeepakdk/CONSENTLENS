@@ -5,12 +5,44 @@ export default function ResultCard({ result }) {
     <div className="glass rounded-3xl p-6 hover:-translate-y-2 transition duration-300">
 
       <div className="flex justify-between items-center mb-4">
-        <h3 className="text-2xl font-bold">
-          {result.appName}
-        </h3>
 
-        <RiskBadge level={result.riskLevel} />
-      </div>
+  <div className="flex items-center gap-3">
+
+    <img
+      src={`https://logo.clearbit.com/${result.appName.toLowerCase().replace(/\s/g, "")}.com`}
+      alt={result.appName}
+      className="w-12 h-12 rounded-full bg-white p-1"
+      onError={(e) => {
+        e.target.src =
+          `https://ui-avatars.com/api/?name=${result.appName}&background=4F46E5&color=fff`;
+      }}
+    />
+
+    <div>
+      <h2 className="text-2xl font-bold">
+        {result.appName}
+      </h2>
+
+      {[
+        "instagram",
+        "facebook",
+        "truecaller",
+        "snapchat",
+        "tiktok"
+      ].includes(result.appName.toLowerCase()) && (
+
+        <span className="bg-red-600 text-white text-xs px-2 py-1 rounded-full">
+          ⚠ DPDP Non-Compliant
+        </span>
+
+      )}
+    </div>
+
+  </div>
+
+  <RiskBadge level={result.riskLevel} />
+
+</div>
 
       <div className="mb-4">
         <p className="text-gray-400 text-sm">
