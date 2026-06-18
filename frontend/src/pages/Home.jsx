@@ -35,7 +35,13 @@ export default function Home() {
         found.push(APP_DB[name]);
       }
     });
-
+    
+    if (found.length === 0) {
+      alert("❌ App not found");
+      setLoading(false);
+      return;
+    }
+    
     setResults(found);
     setLoading(false);
   };

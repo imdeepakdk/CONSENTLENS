@@ -259,8 +259,9 @@ export default function ResultCard({
             }}
           >
             {[
-              "breakdown",
-              "chart",
+              "📊breakdown",
+              "🥧chart",
+              "🔧revoke",
             ].map((item) => (
               <button
                 key={item}
@@ -290,7 +291,7 @@ export default function ResultCard({
           </div>
 
           {tab ===
-            "breakdown" && (
+            "📊breakdown" && (
             <div>
               {Object.entries(
                 app.permissions
@@ -303,45 +304,56 @@ export default function ResultCard({
                     icon,
                   },
                 ]) => (
+                  
                   <div
                     key={name}
                     style={{
-                      display:
-                        "flex",
-                      gap: 10,
-                      alignItems:
-                        "center",
-                      marginBottom: 12,
-                      padding:
-                        "10px",
-                      background:
-                        "#111827",
-                      borderRadius:
-                        "10px",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "12px",
+                      marginBottom: "16px",
                     }}
                   >
-                    <span>
-                      {icon}
-                    </span>
-
+                    <span>{icon}</span>
+                  
                     <span
                       style={{
                         flex: 1,
-                        color:
-                          "#e2e8f0",
+                        color: "#e2e8f0",
                       }}
                     >
                       {name}
                     </span>
-
+                    
+                    {/* Progress Bar */}
+                    
+                    <div
+                      style={{
+                        width: "100px",
+                        height: "8px",
+                        background: "#1e293b",
+                        borderRadius: "999px",
+                        overflow: "hidden",
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: `${pts * 10}%`,
+                          height: "100%",
+                          background:
+                            CATEGORY_COLORS[category],
+                          borderRadius: "999px",
+                        }}
+                      />
+                    </div>
+                      
                     <span
                       style={{
                         color:
-                          CATEGORY_COLORS[
-                            category
-                          ],
-                        fontWeight:
-                          700,
+                          CATEGORY_COLORS[category],
+                        fontWeight: "700",
+                        minWidth: "45px",
+                        textAlign: "right",
                       }}
                     >
                       +{pts}
@@ -353,13 +365,72 @@ export default function ResultCard({
           )}
 
           {tab ===
-            "chart" && (
+            "🥧chart" && (
             <PermissionChart
               permissions={
                 app.permissions
               }
             />
           )}
+          {tab === "🔧revoke" && (
+  <div
+    style={{
+      marginTop: "10px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "12px",
+    }}
+  >
+    <div
+      style={{
+        background: "#1e293b",
+        padding: "16px",
+        borderRadius: "12px",
+      }}
+    >
+      <h4
+        style={{
+          color: "#4ade80",
+          marginBottom: "8px",
+        }}
+      >
+        🤖 Android
+      </h4>
+
+      <p>
+        Settings → Apps →
+        {app.name} →
+        Permissions →
+        Disable Location &
+        Contacts
+      </p>
+    </div>
+
+    <div
+      style={{
+        background: "#1e293b",
+        padding: "16px",
+        borderRadius: "12px",
+      }}
+    >
+      <h4
+        style={{
+          color: "#60a5fa",
+          marginBottom: "8px",
+        }}
+      >
+        🍎 iOS
+      </h4>
+
+      <p>
+        Settings →
+        {app.name} →
+        Toggle off Location,
+        Contacts, Microphone
+      </p>
+    </div>
+  </div>
+)}
         </div>
       )}
     </div>

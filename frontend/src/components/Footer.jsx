@@ -1,41 +1,36 @@
 export default function Footer() {
   return (
-    <footer className="border-t border-gray-800 py-10 mt-20">
+    <footer
+      style={{
+        marginTop: "60px",
+        padding: "30px",
+        textAlign: "center",
+        borderTop: "1px solid #1e293b",
+        color: "#94a3b8",
+      }}
+    >
+      <h3
+        style={{
+          color: "#60a5fa",
+          marginBottom: "10px",
+        }}
+      >
+        ConsentLens
+      </h3>
 
-      <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between gap-6">
+      <p>
+        Powered by ArmorIQ • Privacy First •
+        NeuroX Hackathon 2026
+      </p>
 
-        <div>
-          <h3 className="font-bold text-xl">
-            ConsentLens
-          </h3>
-
-          <p className="text-gray-400">
-            Built for privacy awareness
-          </p>
-        </div>
-
-        <div className="flex gap-6">
-
-          <a href="#">
-            GitHub
-          </a>
-
-          <a href="#">
-            Privacy
-          </a>
-
-          <a href="#">
-            Contact
-          </a>
-
-        </div>
-
-        <div>
-          © {new Date().getFullYear()}
-        </div>
-
-      </div>
-
+      <p
+        style={{
+          marginTop: "10px",
+          fontSize: "14px",
+        }}
+      >
+        © 2026 ConsentLens. All Rights Reserved.
+      </p>
     </footer>
   );
 }
